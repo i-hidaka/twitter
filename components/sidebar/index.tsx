@@ -32,7 +32,7 @@ export default function Sidebar() {
         return <SidebarOption key={text} text={text} Icon={Icon} />;
       })}
 
-      <Button variant="outlined" className={style.sidebar_tweet}>
+      <Button variant="outlined" className={style.sidebar_tweet} fullWidth>
         ツイートする
       </Button>
     </div>

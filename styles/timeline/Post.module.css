@@ -6,7 +6,11 @@
 
 .post_body {
   flex: 1;
-  padding: 10px;
+}
+
+.post_body > p {
+  /* margin: 0;
+  padding: 0; */
 }
 
 .post_body > img {
@@ -22,6 +26,11 @@
 .post_headerDescription {
   margin-bottom: 10px;
   font-size: 15px;
+}
+
+.post_headerDescription > p {
+  margin: 0;
+  padding: 0;
 }
 
 .post_headerText > h3 {
@@ -41,5 +50,5 @@
 }
 
 .post_avatar {
-  padding: 20px;
+  padding: 15px;
 }
