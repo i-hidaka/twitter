@@ -3,7 +3,13 @@ import style from "@/styles/timeline/Timeline.module.css";
 import TweetBox from "./TweetBox";
 import Post from "./Post";
 import db from "@/firebase";
-import { DocumentData, collection, getDocs } from "firebase/firestore";
+import {
+  DocumentData,
+  collection,
+  getDocs,
+  orderBy,
+  query,
+} from "firebase/firestore";
 
 type Post = {
   displayName: string;
@@ -19,7 +25,9 @@ export default function Timeline() {
   useEffect(() => {
     const getPostData = async () => {
       const postData = collection(db, "posts");
-      const querySnapShot = await getDocs(postData);
+      // 最新順に並び替え
+      const q = query(postData, orderBy("timestamp", "desc"));
+      const querySnapShot = await getDocs(q);
       setPosts(querySnapShot.docs.map((doc) => doc.data()));
     };
     getPostData();
