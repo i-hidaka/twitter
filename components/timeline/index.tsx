@@ -12,15 +12,14 @@ export default function Timeline() {
       {/* TweetBox */}
       <TweetBox />
       {/* Post */}
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
+      <Post
+        displayName="ユーザー"
+        userName="user"
+        verified={true}
+        text="ツイート内容"
+        avatar="http://shincode.info/wp-content/uploads/2021/12/icon.png"
+        image="https://source.unsplash.com/random"
+      />
     </div>
   );
 }

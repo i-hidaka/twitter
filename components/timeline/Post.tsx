@@ -8,28 +8,44 @@ import {
   Repeat,
   VerifiedUser,
 } from "@mui/icons-material";
-export default function Post() {
+type Props = {
+  displayName: string;
+  userName: string;
+  verified: boolean;
+  text: string;
+  avatar: string;
+  image: string;
+};
+
+export default function Post({
+  displayName,
+  userName,
+  verified,
+  text,
+  avatar,
+  image,
+}: Props) {
   return (
     <div className={style.post}>
       <div className={style.post_avatar}>
-        <Avatar />
+        <Avatar src={avatar} />
       </div>
       <div className={style.post_body}>
         <div className={style.post_header}>
           <div className={style.post_headerText}>
             <h3>
-              ユーザー
+              {displayName}
               <span className={style.post_headerSpecial}>
-                <VerifiedUser className={style.post_badge} />
-                @user
+                {verified ? <VerifiedUser className={style.post_badge} /> : ""}@
+                {userName}
               </span>
             </h3>
           </div>
           <div className={style.post_headerDescription}>
-            <p>ツイート内容</p>
+            <p>{text}</p>
           </div>
         </div>
-        <img src="https://source.unsplash.com/random" />
+        <img src={image} />
         <div className={style.post_footer}>
           <ChatBubbleOutline fontSize="small" />
           <Repeat fontSize="small" />
