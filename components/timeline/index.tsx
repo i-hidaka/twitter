@@ -6,7 +6,7 @@ import db from "@/firebase";
 import {
   DocumentData,
   collection,
-  getDocs,
+  onSnapshot,
   orderBy,
   query,
 } from "firebase/firestore";
@@ -23,14 +23,12 @@ type Post = {
 export default function Timeline() {
   const [posts, setPosts] = useState<DocumentData>([]);
   useEffect(() => {
-    const getPostData = async () => {
-      const postData = collection(db, "posts");
-      // 最新順に並び替え
-      const q = query(postData, orderBy("timestamp", "desc"));
-      const querySnapShot = await getDocs(q);
+    const postData = collection(db, "posts");
+    // 最新順に並び替え
+    const q = query(postData, orderBy("timestamp", "desc"));
+    onSnapshot(q, (querySnapShot) => {
       setPosts(querySnapShot.docs.map((doc) => doc.data()));
-    };
-    getPostData();
+    });
   }, []);
 
   return (
